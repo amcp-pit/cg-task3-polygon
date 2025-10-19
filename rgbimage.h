@@ -138,15 +138,15 @@ public:
 		return pixels_[row][column];
 	}
 	bool save(const char* filename) {
-		if (pixels_ == nullptr)
+		if (pixels_ == nullptr){
 			return false;
-
+		}
 		std::ofstream outBMP(filename, std::ios_base::binary);
 		if (!outBMP.is_open()) {
 			throw std::runtime_error("Failed to open output file");
 		}
 		
-		const int offset = get_offset(width_);
+		const unsigned int offset = get_offset(width_);
 		BITMAPFILEHEADER bmfh;
 		char bfType[] = { 'B', 'M' };
 		bmfh.bfType = *((WORD*)bfType);
@@ -172,7 +172,7 @@ public:
 		outBMP.write((char*)&bmih, sizeof(BITMAPINFOHEADER));
 
 		BYTE* offset_array = new BYTE[offset];
-		for (int i = 0; i < offset; ++i) {
+		for (unsigned int i = 0; i < offset; ++i) {
 			offset_array[i] = 0;
 		}
 
