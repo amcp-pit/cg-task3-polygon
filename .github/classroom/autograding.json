@@ -2,7 +2,7 @@
   "tests": [
     {
       "name": "Test 1",
-      "setup": "g++ ./polygon.cpp -o polygon -O2 -pedantic-errors",
+      "setup": "",
       "run": "./polygon tests/in1.txt out1.bmp",
       "input": "",
       "output": "",
